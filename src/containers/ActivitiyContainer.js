@@ -5,27 +5,28 @@ import {
     setActivityEat,
     setActivityPlay,
     setActivityDrool,
+    setName,
+    setActivity,
+    setBoth,
 } from '../actions-reducers';
 
 const mapStateToProps = state => {
     return {
-        activity: state.activity
+        activity: state.activity,
+        name: state.name,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleClickEat: () => {
-            dispatch(setActivityEat());
+        handleClickName: name => {
+            dispatch(setName(name));
         },
-        handleClickNap: () => {
-            dispatch(setActivityNap());
+        handleClickActivity: activity => {
+            dispatch(setActivity(activity));
         },
-        handleClickPlay: () => {
-            dispatch(setActivityPlay());
-        },
-        handleClickDrool: () => {
-            dispatch(setActivityDrool());
+        handleClickBoth: (name, activity) => {
+            dispatch(setBoth(name, activity));
         },
     };
 };

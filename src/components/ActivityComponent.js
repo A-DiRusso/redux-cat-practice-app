@@ -1,19 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-export default function ActivityComponent({
-    activity,
-    handleClickNap,
-    handleClickEat,
-    handleClickPlay,
-    handleClickDrool,
-}) {
+export default class ActivityComponent extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          nameInput: props.name,
+          activityInput: props.activity
+      };
+  }
+  _nameChangeHandler = nameInput => {
+      this.setState({ nameInput });
+  };
+  _activityChangeHandler = activityInput => {
+      this.setState({ activityInput });
+  };
+
+  render() {
+    const { activity, name, handleClickName, handleClickBoth } = this.props;
     return (
-        <div>
-            <div>{activity}</div>
-                <button onClick={handleClickDrool}>Drool</button>
-                <button onClick={handleClickEat}>Eat</button>
-                <button onClick={handleClickPlay}>Play</button>
-                <button onClick={handleClickNap}>Nap</button>
-        </div>
+      <div>
+          <h1>name: {name}</h1>
+          <div>activity: {activity}</div>
+          <input
+                onChange={e => {
+                    this._nameChangeHandler(e.target.value);
+                }}
+                value={this.state.nameInput}
+          />
+          <input
+                onChange={e => {
+                    this._activityChangeHandler(e.target.value);
+                }}
+                value={this.state.activityInput}
+          />
+          <button
+                onClick={() => {
+                    handleClickBoth(
+                        this.state.nameInput,
+                        this.state.activityInput,
+                    );
+                }}
+          >
+            Who's doing what?
+          </button>
+      </div>
     );
+  }
 }
+
