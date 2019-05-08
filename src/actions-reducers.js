@@ -34,6 +34,12 @@ export function setActivityPlay() {
 
 }
 
+export function setActivityDrool() {
+    return {
+        type: ACTION_DROOL,
+    }
+}
+
 function activity(state=initialState.activity, action = { type: "" }) {
     switch(action.type) {
         case ACTION_NAP:

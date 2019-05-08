@@ -5,12 +5,12 @@ export default function ActivityComponent({
     handleClickNap,
     handleClickEat,
     handleClickPlay,
-    handleCickDrool,
+    handleClickDrool,
 }) {
     return (
         <div>
             <div>{activity}</div>
-                <button onClick={handleCickDrool}>Drool</button>
+                <button onClick={handleClickDrool}>Drool</button>
                 <button onClick={handleClickEat}>Eat</button>
                 <button onClick={handleClickPlay}>Play</button>
                 <button onClick={handleClickNap}>Nap</button>
